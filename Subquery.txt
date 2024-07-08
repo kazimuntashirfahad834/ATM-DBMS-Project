@@ -1,0 +1,26 @@
+
+1. Find the max transaction status from transaction table
+
+select*
+from transaction
+where t_status =(select MAX( t_status) from transaction);
+
+2.Display transaction id,customer id from card table where card name is fahad.
+
+select t_id, cm_id,c_name
+from card
+where c_no in(select c_no from card where c_name='Fahad');
+
+3.Display the person who has more than the average balance of all the customer.
+
+SELECT*
+FROM card
+WHERE c_balance> (SELECT AVG(c_balance)FROM card);
+
+select * from card;
+
+4. display the id of the person who have account number 3 in customer table.
+
+select cm_id,acc_no
+from customer
+where cm_id=(select cm_id from customer where acc_no=3);

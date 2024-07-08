@@ -1,0 +1,23 @@
+Joining:
+Outer join:
+
+select c.cm_name, a.acc_no
+from account a, customer c
+where c.acc_no(+)=a.acc_no;
+
+ 
+
+Enqui join:
+
+select t_type,c_no
+from transaction,card
+where transaction.t_id=card.t_id and t_status=30000;
+
+
+
+Self join:
+
+select c.c_no ||' - this card belongs to '||m.c_bankname
+from card c, card m
+Where c.c_no=m.c_no ;
+select * from card;

@@ -1,0 +1,15 @@
+     
+CREATE VIEW    card_vu
+(c_name, minbalance, maxbalance, avgbalance)
+
+ AS SELECT   d.t_type, MIN( c.balance), MAX(c.balance),
+AVG(c.balance)
+ FROM    card c, transaction d
+ WHERE c.t_id = d.t_id
+ GROUP BY d.t_type;
+
+select * from card_vu;
+
+drop view card_vu;
+
+alter table customer modify (cm_name not null);

@@ -1,0 +1,89 @@
+Table 1 
+
+create table atm (a_id number (5)constraint pk_atm primary key ,a_name varchar2 (32) , a_add varchar2 (32), a_acc number (5), c_no number(5),constraint fk_atm foreign key (c_no)references card (c_no));
+
+insert into atm(a_id,a_name,a_add,a_acc,c_no)
+   values (2001,'Mirpur ','Dhaka',301,202);
+
+insert into atm(a_id,a_name,a_add,a_acc,c_no)
+   values (2002,'Bashundhara','Dhaka',302,203);
+
+insert into atm(a_id,a_name,a_add,a_acc,c_no)
+   values (2003,'uttara','Dhaka',303,204);
+
+select*from atm;
+
+drop table atm;
+
+
+Table 2
+
+create table card (c_no number (5), c_name varchar2 (32), c_bankname varchar2 (32), c_type varchar2 (32), c_expire varchar2 (32), c_balance number (5),t_id number (5),cm_id number(5),constraint pk_cno primary key (c_no), constraint  fk_card foreign key (t_id) references transaction (t_id),constraint fk_acc1 foreign key (cm_id) references customer (cm_id));
+
+drop table card;
+
+insert into card(c_no,c_name,c_bankname ,c_type,c_expire , c_balance , t_id, cm_id)
+   values (202,'Tanim','jamuna','visa','2020-04-15',30000,02,1002);
+
+
+insert into card(c_no,c_name,c_bankname ,c_type,c_expire , c_balance , t_id, cm_id)
+   values (203,'Mayesha','Ucb','master','2020-05-16',40000,03,1003);
+
+insert into card(c_no,c_name,c_bankname ,c_type,c_expire , c_balance , t_id, cm_id)
+   values (204,'Fahad','Ucb','master','2020-05-16',40000,01,1005);
+
+select* from card;
+
+
+Table 3:
+
+create table transaction (t_id number(5), t_type varchar2 (32),t_time varchar2 (32),t_status varchar2 (32), constraint pk_tid primary key (t_id));
+
+insert into transaction(t_id,t_type,t_time,t_status)
+   values (01,'saving','01.30',20000);
+
+insert into transaction(t_id,t_type,t_time,t_status)
+   values (02,'saving','02.20',30000);
+
+insert into transaction(t_id,t_type,t_time,t_status)
+   values (03,'checking','01.40',20000);
+
+select * from transaction;
+
+drop table transaction;
+
+
+Table 4:
+
+create table customer (cm_id number (5) constraint pkk  primary key , cm_name varchar2 (32),cm_address varchar2 (32),acc_no number (5),constraint fkk foreign key (acc_no) references account (acc_no));
+
+insert into customer(cm_id,cm_name,cm_address, acc_no)
+   values (1005,'Fahad ','Banani',001); 
+insert into customer(cm_id,cm_name,cm_address, acc_no)
+   values (1002,'Tanim','Banasree',002);
+insert into customer(cm_id,cm_name,cm_address, acc_no)
+   values (1003,'Mayesha','Uttara',003);
+
+select* from customer;
+
+drop table customer;
+
+
+Table 5:
+create table account (acc_no number(5), acc_type varchar2 (32), constraint pk_accno primary key (acc_no));
+
+drop table account;
+
+insert into account(acc_no,acc_type)
+   values (001,'debit');
+
+insert into account(acc_no,acc_type)
+   values (002,'debit');
+
+insert into account(acc_no,acc_type)
+   values (003,'credit');
+
+insert into account(acc_no,acc_type)
+   values (004,'credit');
+
+select*from account;
